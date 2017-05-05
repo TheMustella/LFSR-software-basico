@@ -3,23 +3,52 @@
 
 #include <stdio.h>
 #include <string.h>
-
-/* define simple structure */
-struct {
-   unsigned int widthValidated;
-   unsigned int heightValidated;
-} status1;
+#define size_bits 24
 
 /* define a structure with bit fields */
 struct {
-   unsigned int widthValidated : 1;
-   unsigned int heightValidated : 1;
-} status2;
- 
+   unsigned int value : 1;
+} onebit;
+
+struct body
+{
+    onebit lsfr[size_bits];//position
+};
+
 int main( ) {
-
-   printf( "Memory size occupied by status1 : %d\n", sizeof(status1));
-   printf( "Memory size occupied by status2 : %d\n", sizeof(status2));
-
+   printf( "Memory size occupied by bit : %d\n", sizeof(onebit));
    return 0;
 }
+
+/*
+#include<stdio.h>
+#define n 3
+struct body
+{
+    double p[3];//position
+    double v[3];//velocity
+    double a[3];//acceleration
+    double radius;
+    double mass;
+};
+
+struct body bodies[n];
+
+int main()
+{
+    int a, b;
+     for(a = 0; a < n; a++)
+     {
+            for(b = 0; b < 3; b++)
+            {
+                bodies[a].p[b] = 0;
+                bodies[a].v[b] = 0;
+                bodies[a].a[b] = 0;
+            }
+            bodies[a].mass = 0;
+            bodies[a].radius = 1.0;
+     }
+
+    return 0;
+}
+*/
